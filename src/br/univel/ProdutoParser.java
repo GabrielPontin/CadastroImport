@@ -20,7 +20,7 @@ public class ProdutoParser {
 		Pattern p = Pattern.compile("[0-9]+.*");
 
 		listaStr.forEach(e -> {
-
+			
 			if (!e.startsWith("----")) {
 				Matcher m = p.matcher(e); 			// Passa a Linha para um atributo do Tipo matcher.
 				if (m.matches()) {   						// Verifica se a Linha combina com o padrão.
