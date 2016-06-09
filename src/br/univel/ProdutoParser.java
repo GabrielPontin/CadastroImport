@@ -22,8 +22,8 @@ public class ProdutoParser {
 		listaStr.forEach(e -> {
 
 			if (!e.startsWith("----")) {
-				Matcher m = p.matcher(e);
-				if (m.matches()) {
+				Matcher m = p.matcher(e); 			// Passa a Linha para um atributo do Tipo matcher.
+				if (m.matches()) {   						// Verifica se a Linha combina com o padrão.
 					listaPrd.add(getProduto(e));
 				}
 			}
@@ -55,13 +55,15 @@ public class ProdutoParser {
 
 		try {
 			// strPreco = strSemCodigo.substring(indexDolar +
-			// 3).trim().replaceAll("\\.", "").replace(',', '.');
+			// 3).trim().replaceAll("\\.", "").replace(',', '.');       //Gambiarra 
 			// preco = new BigDecimal(strPreco);
 
 			strPreco = strSemCodigo.substring(indexDolar + 3).trim();
 			preco = new BigDecimal(format.parse(strPreco).doubleValue());
 			preco.setScale(2, RoundingMode.HALF_EVEN);
-
+			
+			// (# preco.setScale(2, RoundingMode.HALF_EVEN #) metodo utilizado por banco
+			
 		} catch (NumberFormatException | ParseException e) {
 
 			System.out.println(strPreco);
@@ -69,8 +71,8 @@ public class ProdutoParser {
 			e.printStackTrace();
 		}
 
-		Produto p = new Produto(id, descricao, preco);
-		return p;
+		Produto p = new Produto(id, descricao, preco);		     //Estancia
+		return p;  												//Retorna
 	}
 
 }
